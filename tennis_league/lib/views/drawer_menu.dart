@@ -3,6 +3,8 @@ import 'package:tennis_league/views/register_player.dart';
 import 'package:tennis_league/views/team.dart';
 
 class DrawerMenu extends StatelessWidget {
+  const DrawerMenu({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -10,10 +12,10 @@ class DrawerMenu extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           const DrawerHeader(
-            child: Text('Menu'),
             decoration: BoxDecoration(
               color: Colors.blue,
             ),
+            child: Text('Menu'),
           ),
           ListTile(
             title: const Text('Team Page'),

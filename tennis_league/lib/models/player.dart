@@ -12,5 +12,5 @@ class Player {
     required this.phoneNumber,
     required this.email,
   })  : assert(level >= 1 && level <= 5, 'Level must be between 1 and 5'),
-        this.level = level;
+        level = level;
 }

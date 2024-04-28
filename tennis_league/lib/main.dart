@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:tennis_league/views/team.dart';
+import 'package:provider/provider.dart';
+import 'package:tennis_league/services/player_service.dart';
 
 import 'views/drawer_menu.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => PlayerService(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -73,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      drawer: DrawerMenu(),
+      drawer: const DrawerMenu(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
