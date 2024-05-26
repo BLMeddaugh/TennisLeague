@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tennis_league/views/find_a_sub.dart';
 import 'package:tennis_league/views/register_player.dart';
 import 'package:tennis_league/views/team.dart';
 
@@ -32,6 +33,15 @@ class DrawerMenu extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => RegisterPlayerPage()),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Find A Sub'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const FindASubPage()),
               );
             },
           ),

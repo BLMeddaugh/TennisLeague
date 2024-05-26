@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tennis_league/services/player_service.dart';
-
+import 'package:tennis_league/services/team_service.dart';
 import 'views/drawer_menu.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => PlayerService(),
-      child: MyApp(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => PlayerService()),
+        ChangeNotifierProvider(create: (context) => TeamService()),
+      ],
+      child: const MyApp(),
     ),
   );
 }
