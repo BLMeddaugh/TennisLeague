@@ -25,6 +25,7 @@ class _FindASubPageState extends State<FindASubPage> {
     super.initState();
   }
 
+  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     playerService = Provider.of<PlayerService>(context);
@@ -37,7 +38,6 @@ class _FindASubPageState extends State<FindASubPage> {
   void setMissingPlayer(Player player) {
     setState(() {
       missingPlayer = player;
-      print('Missing player is now: ${missingPlayer.firstName}');
     });
   }
 
@@ -75,7 +75,6 @@ class _FindASubPageState extends State<FindASubPage> {
             Expanded(
               child: Builder(
                 builder: (BuildContext context) {
-                  subPlayers.forEach((player) => print(player.level));
                   List<Player> filteredSubPlayers = subPlayers
                       .where((sub) => sub.level == missingPlayer.level)
                       .toList();
