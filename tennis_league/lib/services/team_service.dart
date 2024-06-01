@@ -34,12 +34,12 @@ class TeamService with ChangeNotifier {
           name: 'Team 1',
           players: [mockPlayers[0], mockPlayers[1]],
           day: DayOfWeek.Monday,
-          captain: mockPlayers[0]),
+          captain: mockPlayers[0].id),
       Team(
           name: 'Team 2',
           players: [mockPlayers[1]],
           day: DayOfWeek.Tuesday,
-          captain: mockPlayers[1]),
+          captain: mockPlayers[1].id),
       // Add more teams here...
     ];
   }

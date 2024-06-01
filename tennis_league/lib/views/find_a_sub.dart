@@ -32,10 +32,10 @@ class _FindASubPageState extends State<FindASubPage> {
     teamService = Provider.of<TeamService>(context);
     team = teamService.teams.first;
     subPlayers = playerService.getSubs();
-    missingPlayer = team.captain; // Set the default missingPlayer
+    missingPlayer = team.players.first; // Set the default missingPlayer
   }
 
-  void setMissingPlayer(Player player) {
+  void setPlayerToFindSubFor(Player player) {
     setState(() {
       missingPlayer = player;
     });
@@ -63,7 +63,7 @@ class _FindASubPageState extends State<FindASubPage> {
                       buttonIcon: Icons.assist_walker,
                       text: 'Filter suitable subs for this player',
                       onButtonPressed: () {
-                        setMissingPlayer(player);
+                        setPlayerToFindSubFor(player);
                       });
                 },
               ),
@@ -86,9 +86,9 @@ class _FindASubPageState extends State<FindASubPage> {
                       return PlayerCard(
                           player: player,
                           buttonIcon: Icons.contact_mail,
-                          text: 'request sub',
+                          text: 'Email Player',
                           onButtonPressed: () {
-                            sendEmail(player);
+                            openEmailToPlayer(player, missingPlayer);
                           });
                     },
                   );
@@ -100,12 +100,15 @@ class _FindASubPageState extends State<FindASubPage> {
   }
 }
 
-void sendEmail(Player player) async {
+// Helper function to open an email client with a pre-filled email to the player
+// TODO: add details to email about next match and team, add drop down to top to select sub day
+// and also filter out subs who can't play that day
+void openEmailToPlayer(Player possibleSub, Player missingPlayer) async {
   final Uri params = Uri(
     scheme: 'mailto',
-    path: player.email,
+    path: possibleSub.email,
     query:
-        'subject=Sub Request&body=Hello ${player.firstName}, could you sub for',
+        'subject=Sub Request&body=Hello ${possibleSub.firstName}, could you sub for ${missingPlayer.firstName}',
   );
 
   Uri url = Uri.parse(params.toString());

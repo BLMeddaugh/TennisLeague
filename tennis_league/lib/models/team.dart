@@ -7,8 +7,8 @@ class Team {
   final List<Player> players;
   final DayOfWeek day;
   final String name;
-  final Player captain;
-  final Player? coCaptain;
+  final Uuid captain;
+  final Uuid? coCaptain;
 
   Team({
     required this.players,
